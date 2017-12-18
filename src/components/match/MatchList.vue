@@ -88,7 +88,7 @@ export default{
 }
 
 </script>
-<style>
+<style scoped>
 .list_box {
     width: 349px;
     height: 350px;

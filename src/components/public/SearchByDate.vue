@@ -30,13 +30,14 @@ export default{
   }
 }
 </script>
-<style>
+<style scoped>
 .dateClass{
   float:left;
   height:60px;
   width: 102px;
-  padding: 0 10px;
+  /*padding: 0 10px;
   margin: 0 5px;
-  border: 1px;
+  border: 3px;
+  border-color: black;*/
 }
 </style>

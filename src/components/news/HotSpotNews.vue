@@ -2,7 +2,7 @@
   <div style="float:left;">
 
     <div class="hotspot">24小时新闻排行榜</div>
-    <div style="margin:0 auto;width:300px;">
+    <div style="margin:0 auto;width:250px;">
       <div v-for="esingle in newsList">
         <!-- 新闻标题 -->
         <div>
@@ -37,7 +37,7 @@ export default{
 }
 </script>
 
-<style>
+<style scoped>
 .sidebar{
   float: left;
   width: 250px;

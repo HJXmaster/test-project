@@ -9,7 +9,7 @@ import elementui from 'element-ui'
 Vue.use(elementui)
 Vue.use(VueRouter)
 Vue.config.productionTip = false
-import 'element-ui/lib/theme-default/index.css'
+import 'element-ui/lib/theme-chalk/index.css'
 
 
 const router = new VueRouter({

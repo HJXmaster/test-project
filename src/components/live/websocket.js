@@ -4,7 +4,7 @@ var index=0;
 var host=window.location.host;
 //判断当前浏览器是否支持WebSocket
 if('WebSocket' in window){
-websocket=new WebSocket("ws://"+"localhost:8080"+"/ymbase/websocket");
+websocket=new WebSocket("ws://"+host+"/ymbase/websocket");
 }
 else{
 alert("Not Support WebSocket!");
@@ -15,17 +15,17 @@ alert("Not Support WebSocket!");
 websocket.onerror = function(){
     setMessageInnerHTML("error");
 };
-
+ 
 //连接成功建立的回调方法
 websocket.onopen = function(event){
     setMessageInnerHTML("open");
 }
-
+ 
 //接收到消息的回调方法
 websocket.onmessage = function(){
     setMessageInnerHTML(event.data);
 }
-
+ 
 //连接关闭的回调方法
 websocket.onclose = function(){
     setMessageInnerHTML("close");

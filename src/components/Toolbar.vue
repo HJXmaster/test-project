@@ -27,7 +27,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   #toolbar i {
   font-size: 30px;
   margin-bottom: 35px;

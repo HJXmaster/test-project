@@ -1,8 +1,10 @@
 import Vue from 'vue'
-// import Router from 'vue-router'
+import Router from 'vue-router'
 import Hello from '@/components/Hello'
+import index from './../App'
 import Toolbar from './../components/Toolbar'
 import Header from './../components/public/Header'
+import Footer from './../components/public/Footer'
 import SearchByDate from './../components/public/SearchByDate'
 import MatchList from './../components/match/MatchList'
 import Game from './../components/match/Game'
@@ -10,7 +12,11 @@ import GameList from './../components/match/GameList'
 import News from './../components/news/News'
 import NewsList from './../components/news/NewsList'
 import NewsInfo from './../components/news/NewsInfo'
-// Vue.use(Router)
+import LiveInfo from './../components/live/LiveInfo'
+import RankingList from './../components/public/RankingList'
+
+import Review from './../components/review/Review'
+Vue.use(Router)
 
 export default
 [
@@ -54,5 +60,24 @@ export default
       name: 'NewsInfo',
       component: NewsInfo
     },
-
+    {
+      path: '/LiveInfo/:matchId',
+      name: 'LiveInfo',
+      component: LiveInfo
+    },
+    {
+      path: '/RankingList',
+      name: 'RankingList',
+      component: RankingList
+    },
+    {
+      path: '/Footer',
+      name: 'Footer',
+      component: Footer
+    },
+    {
+      path: '/Review',
+      name: 'Review',
+      component: Review
+    },
   ]

@@ -67,22 +67,25 @@
   export default {
     data() {
       return {
-        activeIndex: '1'
+        activeIndex: '0'
       };
     },
     methods: {
       handleSelect(key, keyPath) {
+        let that=this;
+        that.activeIndex=key;
+        console.log('菜单栏'+key);
         console.log(key, keyPath);
       }
     }
   }
 </script>
 
-<style>
+<style scoped>
 .css-top {
 	width: 100%;
   height:60px;
-  padding: 0px 0px;
+  padding: 0 0;
   margin: 0 auto;
   border-bottom: 1px solid #cccccc;
   /*box-shadow: 0 0 0px #888;*/

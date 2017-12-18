@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -6,14 +5,21 @@
 </head>
 <body>
 <div id="a1"></div>
-<script type="text/javascript" src="./../../../static/ckplayer/ckplayer.js" charset="utf-8"></script>
+<a href="live.html">跳转</a>
+<script type="text/javascript" src="./ckplayer/ckplayer.js" charset="utf-8"></script>
+<script type="text/javascript" src="barrage.js" charset="utf-8"></script>
+<script type="text/javascript" src="websocket.js"></script>
 <script type="text/javascript">
+	var bgPath='json';//弹幕文件（路径），请自行根据你的程序进行定义，注意文件夹的第一级目录要存在，权限要可写，不加后缀，要修改后缀请到barrage.php里修改
+	var isLive=true;//是否是直播，true=是,false=普通
     var flashvars={
         f:'rtmp://localhost:1935/live/123456',
-        c:0
+        c:0,
+        b:0,
+		loaded:'loadedHandler'
     };
     var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
-    CKobject.embedSWF('ckplayer/ckplayer.swf','a1','ckplayer_a1','600','400',flashvars,params);
+    CKobject.embed('./ckplayer/ckplayer.swf','a1','ckplayer_a1','600','400',false,flashvars,params);
 </script>
 </body>
 </html>

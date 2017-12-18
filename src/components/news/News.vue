@@ -1,20 +1,28 @@
 <template>
-  <div style="float:left;border: 2px solid #cccccc; margin-bottom:3px;">
+  <div @mouseenter="shakes">
+  <el-card style="float:left;border: 2px solid #cccccc; margin-bottom:3px; height:100px;">
+
     <div class="news">
-      <!-- 新闻标题 -->
-      <div class="list-hd">
-          <h3>
-              {{news.title}}
-          </h3>
+      <!--小图-->
+      <div class="smallPic"><img :src="news.newsPic" :alt="news.title" style="margin:5 auto;height:70px;width:100%;float:left;"></div>
+
+      <div style="position:relative;top:-3px;">
+        <!-- 新闻标题 -->
+        <div class="list-hd">
+          {{news.title}}
+        </div>
+        <div class="otherInfo">
+            <span class="other-left">
+                <span :onload="timeago(news.publishTime)">{{time}}</span>
+                <span> 来自 {{news.publisher}}</span>
+                <span> 阅读量 {{news.newsReadNum}}</span>
+            </span>
+        </div>
       </div>
-      <div class="otherInfo">
-          <span class="other-left">
-              <span :onload="timeago(news.publishTime)">{{time}}</span>
-               来自 {{news.publisher}}
-          </span>
-      </div>
-  </div>
-  </div>
+    </div>
+
+  </el-card>
+</div>
 </template>
 <script>
 export default{
@@ -74,11 +82,35 @@ let that=this;
 that.time=result;
      return result;
    },
+   shakes(e){
+     e = (e.targetclassName= 'imgSmall')? e.target :null;
+    if (!time) var time=650;
+    if (!distance) var distance=4;
+    var originalStyle=e.style.cssText;
+    e.style.position='relative';
+    var start=(new Date()).getTime();
+    animate();
+    function animate(){
+      var now=(new Date()).getTime();
+      var elapsed=now-start;
+      var fraction=elapsed/time; //按下按钮后经过长度为time的时间后 还原，也就是说动画执行的时间
+      if (fraction<1)
+      {
+       var x=distance*Math.sin(fraction*4*Math.PI);
+        e.style.left=x+'px';
+        setTimeout(animate,Math.min(25,time-elapsed));
+      }
+      else
+      {
+        e.style.cssText=originalStyle;
+      }
+    }
+  },
  },
 }
 </script>
 
-<style>
+<style scoped>
 .news{
   float:left;
   width:740px;
@@ -86,7 +118,23 @@ that.time=result;
   margin: 5px;
   /*border-style: inherit;*/
 }
+.list-hd{
+  position: relative;
+  /*top:-0px;*/
+  font-weight: bold;
+  font-size: 20px;
+}
 .other-left{
   color: gray;
+  position: relative;
+  top: 10px;
+}
+.smallPic{
+  float:left;
+  margin:-10px 10px 0px 0px;
+  width:124px;
+  border-style: inset;
+  border-radius: 4px;
+  border-color: black;
 }
 </style>

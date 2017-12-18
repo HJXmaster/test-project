@@ -2,37 +2,11 @@
   <div>
     <!-- 顶部导航栏 -->
     <myHeader></myHeader>
-    <div style="margin:0 auto;width:1180px;">
-      <!-- 侧边导航栏 -->
-      <div style="margin:10px;float:left;">
-        <el-menu :default-active="activeIndex" class="sidebar" mode="vertical" @select="handleSelect">
-          <el-menu-item index="0">
-            <router-link class="router-link" to="/"><span class="header_guide">首页</span></router-link>
-          </el-menu-item>
-
-          <el-menu-item index="1">
-            <router-link class="router-link" to="/"><span class="header_guide">比赛</span></router-link>
-          </el-menu-item>
-
-          <el-menu-item index="2">
-            <router-link class="router-link" to="/">
-              <span class="header_guide">新闻</span>
-            </router-link>
-          </el-menu-item>
-
-          <el-menu-item index="3">
-            <router-link class="router-link" to="/">
-              <span class="header_guide">讨论区</span>
-            </router-link>
-          </el-menu-item>
-          <el-submenu index="4">
-            <template slot="title" ><span class="header_guide">联系客服</span></template>
-            <el-menu-item index="4-1">帮助中心</el-menu-item>
-            <el-menu-item index="4-2">意见建议</el-menu-item>
-          </el-submenu>
-        </el-menu>
+    <div style="margin:0 auto;width:1200px;">
+      <!-- 侧边战绩排行榜 -->
+      <div style="float:left;">
+        <rankingList></rankingList>
       </div>
-
       <!-- 一周内比赛列表+日期时间 -->
       <div style="float:right;">
         <!-- 日期栏 -->
@@ -41,19 +15,24 @@
             <el-button type="primary" icon="arrow-left" style="height:60px;" @click="showLastWeek()"></el-button>
 
               <div style="float:left;height:60px;" v-for="esingle in timeList">
-                <el-button :plain="true" type="success" class="dateClass" @click="showMatch(esingle)">{{esingle}}</el-button>
+                <el-button :plain="true" type="info" class="dateClass" @click="showMatch(esingle)" plain>{{esingle}}</el-button>
               </div>
 
             <el-button type="primary" icon="arrow-right" style="height:60px;" @click="showNextWeek()"></el-button>
           </el-button-group>
 
+        <!-- <div>
+          {{timedate}}
+        </div> -->
 
         </div>
         <!-- 比赛列表 -->
-        <div v-for="esingle in gameList">
-          <game :match="esingle"></game>
+        <div v-if="gameList == ''" style="font-size:20px;"><center>没有比赛</center></div>
+        <div>
+          <div v-for="esingle in gameList">
+            <router-link :to="'/LiveInfo/' + esingle.matchId" target="_blank"><game :match="esingle"></game></router-link>
+          </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -64,11 +43,13 @@ import config from './../../router/config'
 import game from './Game'
 import myHeader from './../public/Header'
 import searchByDate from './../public/SearchByDate'
+import rankingList from './../public/RankingList'
 export default{
   components:{
     game,
     myHeader,
-    searchByDate
+    searchByDate,
+    rankingList
   },
   data(){
     return{
@@ -76,6 +57,7 @@ export default{
       activeIndex:1,
       matchList:[],
       weekDate:new Date(),
+      timedate:[],
       gameList:[
         {
           time:'08:30',
@@ -192,6 +174,7 @@ export default{
     showMatch(esingle){
       console.log("该天的比赛"+esingle);
       let that=this;
+      that.timedate=esingle.substr(0,2)+'月'+esingle.substr(3,2)+'号的比赛';
       that.gameList=[];
       for(that.idx of that.matchList){
         if(that.idx.startDate.substr(5,5) === esingle){
@@ -220,7 +203,7 @@ export default{
 }
 </script>
 
-<style>
+<style scoped>
 .sidebar{
   float: left;
   width: 250px;
@@ -229,10 +212,11 @@ export default{
 .dateClass{
   float:left;
   height:60px;
-  width: 102px;
-  padding: 0 10px;
-  margin: 0 5px;
-  border: 1px;
+  width: 111px;
+  padding: 5px 0px;
+  margin: 1px 1px;
+  border: 5px;
   border-color: black;
+  background-color: #EBEEF5;
 }
 </style>
