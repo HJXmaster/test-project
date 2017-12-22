@@ -96,9 +96,12 @@
 </template>
 
 <script>
+import axios from 'axios'
+import config from './../../router/config'
   export default {
     data() {
       return {
+        rootURL:config.rootURL,
         eastData:[
           {
             rank:'01',
@@ -240,17 +243,53 @@
     },
     methods: {
       handleSelect(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key, keyPath);
       },
       tableRowClassName (row, rowIndex) {
-        console.log('index的值'+rowIndex);
+        // console.log('index的值'+rowIndex);
       if (rowIndex>=8 ) {
         return 'info-row'
       } else {
         return 'eastStyle'
       }
     }
-    }
+  },
+  created(){
+    let that=this;
+    axios.get(that.rootURL+'/getRankingList.do').then(function(res){
+      that.eastData=[];
+      that.westData=[];
+      var team={};
+      var i=1;
+      for(that.idx of res.data.east){
+        team=[];
+        team.rank=''+i++;
+        team.team=that.idx.teamName;
+        team.win=that.idx.win;
+        team.fail=that.idx.fail;
+        if(that.idx.fail=='0')team.rate='100%';
+        else {
+          team.rate=that.idx.win/(that.idx.win+that.idx.fail)*100;
+          team.rate=team.rate.toFixed(2)+'%';
+        }
+        that.eastData.push(team);
+      }
+      i=1;
+      for(that.idx of res.data.west){
+        team=[];
+        team.rank=''+i++;
+        team.team=that.idx.teamName;
+        team.win=that.idx.win;
+        team.fail=that.idx.fail;
+        if(that.idx.fail=='0')team.rate='100%';
+        else {
+          team.rate=that.idx.win/(that.idx.win+that.idx.fail)*100;
+          team.rate=team.rate.toFixed(2)+'%';
+        }
+        that.westData.push(team);
+      }
+    });
+  }
   }
 </script>
 

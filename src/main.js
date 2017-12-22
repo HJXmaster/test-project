@@ -6,11 +6,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './router'
 import elementui from 'element-ui'
+import axios from 'axios'
+axios.defaults.withCredentials=true;
 Vue.use(elementui)
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 import 'element-ui/lib/theme-chalk/index.css'
-
 
 const router = new VueRouter({
 	routes

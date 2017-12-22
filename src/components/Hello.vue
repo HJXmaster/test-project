@@ -10,6 +10,7 @@
       <el-main>
     <div style="margin:40px auto;width:1200px;">
       <!--走马灯-->
+      <center>
       <div style="margin:20px auto;">
         <el-carousel :interval="4000" type="card" height="360px" width="680px">
           <el-carousel-item v-for="(item,key) in pics" :key="item">
@@ -18,10 +19,10 @@
           </el-carousel-item>
         </el-carousel>
       </div>
-
+    </center>
 
       <!--今日热门比赛-->
-      <div style="margin:20px 0px;">
+      <div style="margin:20px auto;">
         <el-card>
           <div style="width:100%;float:left;">
             <div style="float:left;font-size:21px; font-weight:bold;">今日热门比赛</div>
@@ -33,8 +34,9 @@
             </div>
             </router-link>
           </div>
-          <div v-for="match in gameList">
-            <el-card style="width:250px;float:left; margin:10px 10px;">
+          <div v-for="match in gameList" style="margin:0 auto;">
+            <router-link :to="'/LiveInfo/' + match.matchId" target="_blank">
+            <el-card style="width:200px;float:left; margin:10px 10px;" class="elcardhover">
               <div v-if="match.ifEnd === '1'">
                 <table>
                   <tr>
@@ -79,6 +81,7 @@
 
 
             </el-card>
+            </router-link>
           </div>
         </el-card>
       </div>
@@ -89,9 +92,9 @@
       </el-card>
     </div>
   </el-main>
-  <el-footer>
+  <el-footer style="padding:0;">
 <!--尾部信息-->
-    <div >
+    <div>
       <myFooter></myFooter>
     </div>
   </el-footer>
@@ -121,7 +124,7 @@ export default {
            title:'詹姆斯带队胜湖人'
          },
          {
-           pic:require('./../assets/img/index1.png'),
+           pic:require('./../assets/img/index1.jpg'),
            title:'紫金科比球衣退役'
          },
          {
@@ -180,7 +183,7 @@ export default {
   /*opacity: 0.8;*/
   color: white;
   position: absolute;
-  left: 0px;
+  left: 24px;
   top: 324px;
   font-size: 20px;
   min-width:543px;
@@ -188,10 +191,13 @@ export default {
   padding: 5px 5px;
 }
 .teamNmae{
-  width: 130px;
+  width: 85px;
 }
 .router-link{
   text-decoration: none;
   color: black;
+}
+.elcardhover :hover{
+  background-color: #DCDFE6;
 }
 </style>

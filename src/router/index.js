@@ -14,6 +14,10 @@ import NewsList from './../components/news/NewsList'
 import NewsInfo from './../components/news/NewsInfo'
 import LiveInfo from './../components/live/LiveInfo'
 import RankingList from './../components/public/RankingList'
+import Login from './../components/public/Login'
+import CenterIndex from './../components/center/CenterIndex'
+import UserInfoManager from './../components/center/centerItem/UserInfoManager'
+import ReviewManager from './../components/center/centerItem/ReviewManager'
 
 import Review from './../components/review/Review'
 Vue.use(Router)
@@ -79,5 +83,23 @@ export default
       path: '/Review',
       name: 'Review',
       component: Review
+    },
+    {
+      path: '/CenterIndex',
+      name: 'CenterIndex',
+      component: CenterIndex,
+      children:[
+      {
+  			 path:'',
+  		},
+  		{
+  			 path:'UserInfoManager',
+  			 component:UserInfoManager
+  		},
+      {
+  			 path:'ReviewManager',
+  			 component:ReviewManager
+  		},
+  		]
     },
   ]

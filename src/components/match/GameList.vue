@@ -1,40 +1,49 @@
 <template>
   <div>
-    <!-- 顶部导航栏 -->
-    <myHeader></myHeader>
-    <div style="margin:0 auto;width:1200px;">
-      <!-- 侧边战绩排行榜 -->
-      <div style="float:left;">
-        <rankingList></rankingList>
-      </div>
-      <!-- 一周内比赛列表+日期时间 -->
-      <div style="float:right;">
-        <!-- 日期栏 -->
-        <div style="padding:10px 0;">
-          <el-button-group>
-            <el-button type="primary" icon="arrow-left" style="height:60px;" @click="showLastWeek()"></el-button>
+    <el-container>
+      <el-header style="padding:0;">
+        <!-- 顶部导航栏 -->
+        <myHeader></myHeader>
+      </el-header>
+      <el-main>
+        <div style="margin:0 auto;width:1200px;">
+          <!-- 侧边战绩排行榜 -->
+          <div style="float:left;">
+            <rankingList></rankingList>
+          </div>
+          <!-- 一周内比赛列表+日期时间 -->
+          <div style="float:right;">
+            <!-- 日期栏 -->
+            <div style="padding:10px 0;">
+              <el-button-group>
+                <el-button type="primary" icon="arrow-left" style="height:60px;" @click="showLastWeek()"></el-button>
 
-              <div style="float:left;height:60px;" v-for="esingle in timeList">
-                <el-button :plain="true" type="info" class="dateClass" @click="showMatch(esingle)" plain>{{esingle}}</el-button>
+                  <div style="float:left;height:60px;" v-for="esingle in timeList">
+                    <el-button :plain="true" type="info" class="dateClass" @click="showMatch(esingle)" plain>{{esingle}}</el-button>
+                  </div>
+
+                <el-button type="primary" icon="arrow-right" style="height:60px;" @click="showNextWeek()"></el-button>
+              </el-button-group>
+
+            <!-- <div>
+              {{timedate}}
+            </div> -->
+
+            </div>
+            <!-- 比赛列表 -->
+            <div v-if="gameList == ''" style="font-size:20px;"><center>没有比赛</center></div>
+            <div>
+              <div v-for="esingle in gameList">
+                <router-link :to="'/LiveInfo/' + esingle.matchId" target="_blank"><game :match="esingle"></game></router-link>
               </div>
-
-            <el-button type="primary" icon="arrow-right" style="height:60px;" @click="showNextWeek()"></el-button>
-          </el-button-group>
-
-        <!-- <div>
-          {{timedate}}
-        </div> -->
-
-        </div>
-        <!-- 比赛列表 -->
-        <div v-if="gameList == ''" style="font-size:20px;"><center>没有比赛</center></div>
-        <div>
-          <div v-for="esingle in gameList">
-            <router-link :to="'/LiveInfo/' + esingle.matchId" target="_blank"><game :match="esingle"></game></router-link>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </el-main>
+      <el-footer>
+
+      </el-footer>
+    </el-container>
   </div>
 </template>
 <script>

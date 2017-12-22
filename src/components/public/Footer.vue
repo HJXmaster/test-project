@@ -24,22 +24,28 @@ export default {
 <style scoped>
 #topBlock{
 	width: 100%;
-  background-color:#EFF2F7;
+	margin:0;
+	padding: 0;
+  background-color:#545c64;
+	/*background-color: black;*/
+	opacity: 0.9;
+
 }
 #footer{
 	width:1210px;
   margin: 0 auto;
 	margin-top: 5px;
-	padding: 50px 50px 50px 50px;
-	background-color: #EFF2F7;
+	padding: 20px;
+	background-color: #545c64;
 	text-align: center;
 }
 #footer h5,#footer h6{
 
-	color: black;
+	color: white;
 	font-size: 16px;
 	font-family: Apple LiSung Light;
 	font-weight: normal;
 	line-height: 30px;
+	margin:0 auto;
 }
 </style>
