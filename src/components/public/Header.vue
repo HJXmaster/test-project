@@ -26,7 +26,7 @@
           </el-menu-item>
 
           <el-menu-item index="3">
-            <router-link class="router-link" to="/">
+            <router-link class="router-link" to="/TopicList">
               <span class="header_guide">讨论区</span>
             </router-link>
           </el-menu-item>

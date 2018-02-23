@@ -19,6 +19,10 @@ import CenterIndex from './../components/center/CenterIndex'
 import UserInfoManager from './../components/center/centerItem/UserInfoManager'
 import ReviewManager from './../components/center/centerItem/ReviewManager'
 
+import Topic from './../components/topic/Topic'
+import TopicList from './../components/topic/TopicList'
+import TopicInfo from './../components/topic/TopicInfo'
+
 import Review from './../components/review/Review'
 Vue.use(Router)
 
@@ -101,5 +105,20 @@ export default
   			 component:ReviewManager
   		},
   		]
+    },
+    {
+      path: '/Topic',
+      name: 'Topic',
+      component: Topic
+    },
+    {
+      path: '/TopicList',
+      name: 'TopicList',
+      component: TopicList
+    },
+    {
+      path: '/TopicInfo/:topicId',
+      name: 'TopicInfo',
+      component: TopicInfo
     },
   ]

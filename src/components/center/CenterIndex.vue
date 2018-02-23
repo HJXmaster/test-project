@@ -12,6 +12,7 @@
             router
               default-active="1"
               class="el-menu-vertical-demo"
+              style="height:100%;"
               @open="handleOpen"
               @close="handleClose"
               background-color="#545c64"
@@ -27,7 +28,7 @@
             </el-menu>
           </el-aside>
 
-          <el-main style="padding:0;margin-right:150px;">
+          <el-main style="padding:0;margin-right:150px; height:100%;min-height:600px;">
             <el-card style="background-color:#F2F6FC;margin:0 auto;">
               <transition name="slide-user" mode="out-in">
                 <router-view class="child-view"></router-view>
