@@ -90,6 +90,28 @@
       <el-card style="float:left;">
         <rankingList></rankingList>
       </el-card>
+      <!-- 新闻推荐榜 -->
+      <el-card style="float:left;margin-left:65px;">
+        <indexNewsList></indexNewsList>
+        <router-link to="/NewList" class="router-link">
+          <div style="color:#379be9;">
+            <i class="el-icon-d-arrow-right" style="float:right;position:relative;top:4px; left:-5px;"></i>
+            <i class="el-icon-d-arrow-right" style="float:right;position:relative;top:4px;"></i>
+            <div style="float:right;border-bottom: 1px solid #cccccc;">查看更多新闻</div>
+          </div>
+        </router-link>
+      </el-card>
+       <!-- 话题贴推荐榜 -->
+            <el-card style="float:left;margin-left:65px;">
+              <indexTopicList></indexTopicList>
+              <router-link to="/NewList" class="router-link">
+                <div style="color:#379be9;">
+                  <i class="el-icon-d-arrow-right" style="float:right;position:relative;top:4px; left:-5px;"></i>
+                  <i class="el-icon-d-arrow-right" style="float:right;position:relative;top:4px;"></i>
+                  <div style="float:right;border-bottom: 1px solid #cccccc;">参与更多话题</div>
+                </div>
+              </router-link>
+            </el-card>
     </div>
   </el-main>
   <el-footer style="padding:0;">
@@ -108,12 +130,16 @@ import config from './../router/config'
 import myHeader from './public/Header'
 import myFooter from './public/Footer'
 import rankingList from './public/RankingList'
+import indexNewsList from './public/IndexNewsList'
+import indexTopicList from './public/IndexTopicList'
 export default {
   name: 'app',
   components:{
     myHeader,
     rankingList,
     myFooter,
+    indexNewsList,
+    indexTopicList,
   },
   data(){
     return{
@@ -177,7 +203,7 @@ export default {
 }
 </script>
 
-<style>
+<style scope>
 .el-carousel__item span {
   background: rgba(16,16,16,0.8);
   /*opacity: 0.8;*/

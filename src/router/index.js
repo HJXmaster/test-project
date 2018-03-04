@@ -14,6 +14,7 @@ import NewsList from './../components/news/NewsList'
 import NewsInfo from './../components/news/NewsInfo'
 import LiveInfo from './../components/live/LiveInfo'
 import RankingList from './../components/public/RankingList'
+import IndexNewsList from './../components/public/IndexNewsList'
 import Login from './../components/public/Login'
 import CenterIndex from './../components/center/CenterIndex'
 import UserInfoManager from './../components/center/centerItem/UserInfoManager'
@@ -62,6 +63,11 @@ export default
       path: '/NewsList',
       name: 'NewsList',
       component: NewsList
+    },
+    {
+      path: '/IndexNewsList',
+      name: 'IndexNewsList',
+      component: IndexNewsList
     },
     {
       path: '/NewsInfo/:publishId',

@@ -6,51 +6,79 @@
         <myHeader></myHeader>
       </el-header>
 
-      <el-main style="margin:0 auto;width:1000px;padding:50px 0;">
-        <div>
-        </div>
-        <div>
+      <el-main style="margin:0 auto;width:100%;padding:10px 0 0 0; background-color:#545c64;height:1000px;">
           <div class="liveStyle">
-            <div style="width:100%;height:75px;background-color:green;margin:0 auto;float:left;">
-              <div style="margin:0 auto;">
-                <div style="width:40%;float:left;">
-                  <!--客队-->
-                  <img style="position:relative;top:3px;float:right;" width="68" height="68" :src="match.leftTeamBadge">
-                  <span style="font-size:23px;position:relative;float:right;top:20px;">{{match.leftTeamName}}</span>
+            <div>
+              <div style="width:100%;height:120px;background-color:rgb(0, 0, 0);margin:0 auto;">
+                <div style="margin:0 auto;">
+                  <div style="width:33%;float:left;">
+                    <!--客队-->
+                    <div style="position:relative;height:100%;">
+
+                      <div style="transform-origin:0% 100%;float:left;transform: skew(-42deg);background-color: rgb(21, 137, 204);width:80px;height:120px;"></div>
+
+                      <div style="transform-origin:0% 100%;float:left;transform: skew(-42deg);width:20px;height:120px;background-color: rgb(41, 157, 224);"></div>
+                      <div style="transform-origin:0% 100%;float:left;transform: skew(-42deg);width:180px;height:120px;background: linear-gradient(to right, rgb(10, 68, 102), rgb(0, 0, 0));"></div>
+
+                    </div>
+                    <!-- <span style="font-size:23px;position:relative;float:right;top:20px;">{{match.leftTeamName}}</span> -->
+
+                  </div>
+
+
+
+                  <div style="width:33%;float:right;">
+                    <!--主队-->
+                    <div style="height:100%;float:right;">
+                      <div style="transform-origin:0% 100%;float:left;transform: skew(42deg);width:180px;height:120px;background: linear-gradient(to left, rgb(89, 18, 32), rgb(0, 0, 0));"></div>
+                      <div style="transform-origin:0% 100%;float:left;transform: skew(42deg);width:20px;height:120px;background-color: rgb(199, 57, 85);"></div>
+                      <div style="transform-origin:0% 100%;float:left;transform: skew(42deg);background-color: rgb(179, 37, 65);width:80px;height:120px;"></div>
+                    </div>
+
+
+                    <!-- <span style="font-size:23px;position:relative;float:left;top:20px;">{{match.rightTeamName}}</span> -->
+                  </div>
                 </div>
+              </div>
 
-
-                <!-- 比赛性质介绍 -->
-                <div style="width:20%;float:left;">
+              <div style="position:relative;top:-120px;width:100%;float:left;">
+                <div style="width:33%;float:left;">
+                  <img style="float:left;position:relative;padding-left:50px;" width="120" height="120" :src="match.leftTeamBadge">
+                  <el-button style="float:left;position:relative;border-style:none;background-color:rgba(34, 71, 137, 0.3);color:white;font-size:20px;position:relative;float:right;top:35px;width:150px" round>{{match.leftTeamName}}</el-button>
+                </div>
+                  <!-- 比赛性质介绍 -->
+                <div style="width:34%;float:left;color:white;">
                   <center>
                   <div v-if="match.ifEnd === '1'" style="position:relative;top:15px;">
+                    <div>{{match.startDate}} {{match.startTime}}</div>
+                    <div style="font-size:35px;">{{match.leftGoal}} - {{match.rightGoal}}</div>
                     已结束
-                    <div>{{match.leftGoal}} - {{match.rightGoal}}</div>
                   </div>
-                  <div v-else-if="match.quarter === ''" style="position:relative;top:5px;">
+                  <div v-else-if="match.quarter === ''" style="position:relative;top:20px;">
+
+                    <div style="font-size:25px;">{{match.startDate}} {{match.startTime}}</div>
                     未开始
-                    <div>{{match.startDate}}</br>{{match.startTime}}</div>
                   </div>
                   <div  v-else>
-                    <div style="color:red;">
-                      <div>{{match.quarter}} {{match.quarterTime}}</div>
-                    </div>
-                    <div style>{{match.leftGoal}} - {{match.rightGoal}}</div>
+                    <div>{{match.quarter}} {{match.quarterTime}}</div>
+                    <div style="font-size:35px;">{{match.leftGoal}} - {{match.rightGoal}}</div>
+                    正在直播
                   </div>
                 </center>
                 </div>
+                <div style="width:33%;float:left;">
+                  <img style="float:right;padding-right:50px;z-index:999" width="120" height="120" :src="match.rightTeamBadge">
+                  <el-button style="float:right;border-style:none;background-color:rgba(179, 37, 65, 0.3);color:white;font-size:20px;position:relative;float:left;top:35px;width:150px" round>{{match.rightTeamName}}</el-button>
+                </div>
 
-
-                <div style="width:40%;float:right;">
-                  <!--主队-->
-                  <img style="position:relative;top:3px;float:left;" width="68" height="68" :src="match.rightTeamBadge">
-                  <span style="font-size:23px;position:relative;float:left;top:20px;">{{match.rightTeamName}}</span>
                 </div>
               </div>
+              <div style="position:relative;top:-120px;">
+                <iframe :src="liveUrl" class="iframeStyle"></iframe>
+              </div>
             </div>
-            <iframe :src="liveUrl" class="iframeStyle"></iframe>
-          </div>
-            <div style="background-color:blue;width:270px; height:435px;float:left;">
+
+            <!-- <div style="background-color:blue;width:270px; height:510px;float:left;border-radius:4px;margin-left:5px;">
               <div style="margin:5px auto; width:100%;">
                 <div style="width:80%; float:left;">
                   <el-input v-model="input" placeholder="请输入内容"></el-input>
@@ -59,8 +87,7 @@
                   <el-button type="primary" style="padding-left:9px;padding-right:9px;margin:0 2px;">发送</el-button>
                 </div>
               </div>
-            </div>
-        </div>
+            </div> -->
       </el-main>
 
       <el-footer style="padding:0;">
@@ -149,15 +176,15 @@ export default{
 
 <style>
 .iframeStyle{
-  width:635px;
-  height:435px;
+  width:100%;
+  height:607px;
   border:0px;
   border-style: hidden;
-  background-color: gray;
+  background-color: #282828;
   float:left;
 }
 .liveStyle{
-    width:635px;
-    float:left;
+    width:80%;
+    margin: 0 auto;
 }
 </style>

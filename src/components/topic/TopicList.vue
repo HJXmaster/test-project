@@ -206,13 +206,5 @@ that.time=result;
 </script>
 
 <style scoped>
-.sidebar{
-  float: left;
-  width: 250px;
-  margin-right:10px;
-}
-.el-pager li {
-    margin: 5px;
-    padding: 10px;
-}
+
 </style>

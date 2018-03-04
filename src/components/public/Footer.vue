@@ -30,11 +30,12 @@ export default {
 	/*background-color: black;*/
 	opacity: 0.9;
 
+
 }
 #footer{
 	width:1210px;
   margin: 0 auto;
-	margin-top: 5px;
+	margin-top: 0px;
 	padding: 20px;
 	background-color: #545c64;
 	text-align: center;

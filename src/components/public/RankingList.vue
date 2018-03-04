@@ -10,6 +10,7 @@
           width="300px"
           height="650px"
           align="center"
+          cell-class-name="tablecell"
           :row-style="tableRowClassName">
             <el-table-column
               prop="rank"
@@ -293,8 +294,11 @@ import config from './../../router/config'
   }
 </script>
 
-<style>
+<style scope>
 .el-table .cell{
+  padding: 0px 0px;
+}
+.tablecell{
   padding: 0px 0px;
 }
 .el-tabs--border-card>.el-tabs__content{

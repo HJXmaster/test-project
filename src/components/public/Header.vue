@@ -216,8 +216,8 @@ import { Notification } from 'element-ui'
 <style scoped>
 .css-top {
 	width: 100%;
-  height:60px;
-  padding:10px 0;
+  /* height:70px; */
+  padding:0px 0;
 
   margin: 0;
   border-bottom: 1px solid #cccccc;
@@ -302,7 +302,7 @@ import { Notification } from 'element-ui'
 .logo{
   width: 80px;
   position: relative;
-  top: -10px;
+  top: -5px;
   /*background-color: blue;*/
 }
 
